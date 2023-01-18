@@ -1,4 +1,4 @@
-# Covid19 Live Stream To Database
+# Covid19 Tweets and Case Count Stream
 This project is based on a senior data engineering interview question.
 
 ### Brief
