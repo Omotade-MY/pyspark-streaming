@@ -14,9 +14,11 @@ In this project I will be assuming the role of a data engineer whose task is to 
 tweet and coronavirus data, and finally, stores merged data into a MongoDB instance.
 
 ### Key Technology to be Used
-* Python: We will be using the beautifulsoup and requests library for our webscraping task and also for streaming tweets from Twitter. For more information on python and beautifulsoup visit the below links
+* Python: We will be using the beautifulsoup and requests library for our webscraping task and for streaming tweets from Twitter we will be using the tweepy module. For more information on python, beautifulsoup and tweepy visit the below links
    * https://www.python.org/doc/essays/blurb/
    * https://pypi.org/project/beautifulsoup4/
+   * https://docs.tweepy.org/en/stable/
+   * socket: The socket module available in the python standard library was used to create a TCP stream where we can easily connect spark to read from
 
 * Pyspark: We will be using the pyspark streaming service for processing our stream data. Read more on pypsark on https://spark.apache.org/docs/latest/api/python/
 
@@ -34,5 +36,22 @@ tweet and coronavirus data, and finally, stores merged data into a MongoDB insta
 }
 
 * The data is then loaded into a MongoDB
+
+
+### How to run the Code
+The project contains four(4) python scripts
+* stream.py: This starts the streaming from twitter. It calls the stream class in the utility module. Run this module first. 
+* scrape.py: This extracts the live number of covid 19 cases from the worldmeter website 
+* utility.py: This contains implementation (function) of the streaming codes from twiiter, setting up TCP socket and sending message stream to TCP at localhost
+* Spark_Streaming.py: This contains implementation of spark streaming pipeline and connection to MongoDB at localhost. This module should be run second after the `stream` module.
+
+**Code modular dependency**
+The `stream` module depends on the `utility` module.
+The `Spark_Stream` module depends on the `scrape` module
+
+stream.py and Spark_Stream.py are to be run on separated windows
+
+
+!["Project Flow Diagram"](flow_diagram.png)
 
 **Note This projec was completed locally and all tools were setup on local machine**

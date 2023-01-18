@@ -1,0 +1,4 @@
+python
+bs4
+tweepy
+dotenv
